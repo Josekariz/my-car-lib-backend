@@ -2,7 +2,8 @@ class ReviewsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   def index
-    render json: Review.all
+    reviews = User.find_by(id: session[:user_id]).reviews
+    render json: reviews
   end
 
   def show
@@ -16,7 +17,7 @@ class ReviewsController < ApplicationController
   end
 
   def create 
-    review= Review.find_by(id: session[:user_id]).reviews.create!(review_params)
+    review= User.find_by(id: session[:user_id]).reviews.create!(review_params)
     render json: review, status: :created
   end
 
