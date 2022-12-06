@@ -21,10 +21,16 @@ class ReviewsController < ApplicationController
     render json: review, status: :created
   end
 
+  def destroy
+    r=find_review
+    r.destroy
+    head :no_content
+  end
+
 
   private
   def find_review
-    Review.find(params[:id])
+    User.find_by(id: session[:user_id]).reviews.find(params[:id])
   end
 
   def render_not_found
