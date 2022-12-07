@@ -3,7 +3,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
     create_table :reviews do |t|
       t.string :model
       t.string :name
-      t.string :url
+      t.string :image_url
       t.string :info
       t.integer :user_id
 
