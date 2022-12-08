@@ -37,8 +37,8 @@ class ReviewsController < ApplicationController
     render json: {error: "Review not found"}, status: :not_found
   end
 
-  # def review_params
-  #   params.permit(:model, :name, :image_url, :info)
-  # end
+  def review_params
+    params.permit(:model, :name, :image_url, :info)
+  end
 
 end
